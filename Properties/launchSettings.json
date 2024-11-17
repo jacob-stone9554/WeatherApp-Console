@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WeatherApp-Console": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "apiKey": "acfe38643231437580132358241711"
+      }
+    }
+  }
+}
