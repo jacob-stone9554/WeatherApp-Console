@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace WeatherApp_Console
+namespace WeatherApp_Console.Models
 {
     /// <summary>
     ///     WeatherData will hold the information retrieved from the API.
@@ -11,9 +11,12 @@ namespace WeatherApp_Console
     class WeatherData
     {
         [JsonPropertyName("location")]
-        public Location location {  get; set; }
+        public Location location { get; set; }
 
         [JsonPropertyName("current")]
         public Current current { get; set; }
+
+        [JsonPropertyName("forecast")]
+        public Forecast forecast { get; set; }
     }
 }

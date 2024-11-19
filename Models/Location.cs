@@ -1,4 +1,4 @@
-﻿namespace WeatherApp_Console
+﻿namespace WeatherApp_Console.Models
 {
     class Location
     {
@@ -8,7 +8,7 @@
         public decimal latitude;
         public decimal longitude;
         public ulong localtime_epoch;
-        public DateTime localtime; 
+        public DateTime localtime;
     }
 }
 //switch this to string if there are issues pulling data from the json
