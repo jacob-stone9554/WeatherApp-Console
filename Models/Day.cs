@@ -1,6 +1,6 @@
 ﻿namespace WeatherApp_Console.Models
 {
-    class Day
+    public class Day
     {
         public decimal maxtemp_c {  get; set; }
         public decimal maxtemp_f { get; set; }

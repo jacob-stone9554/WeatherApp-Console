@@ -1,6 +1,6 @@
 ﻿namespace WeatherApp_Console.Models
 {
-    class Location
+    public class Location
     {
         public string? name;
         public string? region;

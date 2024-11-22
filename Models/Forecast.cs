@@ -2,7 +2,7 @@
 
 namespace WeatherApp_Console.Models
 {
-    class Forecast
+    public class Forecast
     {
         [JsonPropertyName("forecastday")]
         public ForecastDay[] forecastDay { get; set; }

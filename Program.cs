@@ -55,14 +55,12 @@ class WeatherAppMain
 
     public static void consoleSetup()
     {
-        Console.SetWindowSize(105, 30);
+        Console.SetWindowSize(110, 30);
         Console.ForegroundColor = ConsoleColor.Green;
 
         Console.WriteLine(new string('=', 105));
         Console.WriteLine("\r\n░██╗░░░░░░░██╗███████╗░█████╗░████████╗██╗░░██╗███████╗██████╗░░█████╗░██████╗░██████╗░  ██╗░░░██╗░░███╗░░\r\n░██║░░██╗░░██║██╔════╝██╔══██╗╚══██╔══╝██║░░██║██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗  ██║░░░██║░████║░░\r\n░╚██╗████╗██╔╝█████╗░░███████║░░░██║░░░███████║█████╗░░██████╔╝███████║██████╔╝██████╔╝  ╚██╗░██╔╝██╔██║░░\r\n░░████╔═████║░██╔══╝░░██╔══██║░░░██║░░░██╔══██║██╔══╝░░██╔══██╗██╔══██║██╔═══╝░██╔═══╝░  ░╚████╔╝░╚═╝██║░░\r\n░░╚██╔╝░╚██╔╝░███████╗██║░░██║░░░██║░░░██║░░██║███████╗██║░░██║██║░░██║██║░░░░░██║░░░░░  ░░╚██╔╝░░███████╗\r\n░░░╚═╝░░░╚═╝░░╚══════╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝░░░░░  ░░░╚═╝░░░╚══════╝");
         Console.WriteLine(new string('=', 105));
-        Console.WriteLine(" {0, -15} | {1, -10} | {2, 5} | {3, 10}", "City", "Temp", "Precip", "Feels Like");
-        Console.WriteLine(new string('-', 105));
     }
 
     public static async Task<string> makeApiCall(string city, string info, string url, HttpClient client)
@@ -80,15 +78,27 @@ class WeatherAppMain
 
     public static void showCurrentData(WeatherData data)
     {
+        Console.WriteLine(new string('-', 105));
+        Console.WriteLine("{0, 53}", "Current Conditions");
+        Console.WriteLine(new string('-', 105));
+        Console.WriteLine(" {0, -15} | {1, -10} | {2, 5} | {3, 10}", "City", "Temp", "Precip", "Feels Like");
         Console.WriteLine(" {0, -15} | {1, -10} | {2, 5} | {3, 10}", data.location.name, 
             data.current.temp_f, data.current.precip_in, data.current.feelslike_f);
+        Console.WriteLine(new string('-', 105));
     }
 
     public static void showForecastData(WeatherData data)
     {
+        //for each hour, output a line 
+
         Console.WriteLine(new string('=', 105));
-        Console.WriteLine();
+        Console.WriteLine("{0, 53}", "Daily Forecast");
+        Console.WriteLine(new string('-', 105));
+        Console.WriteLine(" {0, -15} | {1, -10} | {2, 5} | {3, 10} | {4, 15}", "City", "Time", "Temp", "Precip", "Feels Like");
+        Console.WriteLine(" {0, -15} | {1, -10} | {2, 5} | {3, 10}", data.location.name,
+            data.current.temp_f, data.current.precip_in, data.current.feelslike_f);
+
+       
+
     }
-
-
 }
