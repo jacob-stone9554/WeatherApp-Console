@@ -15,6 +15,9 @@ namespace WeatherApp_Console.Models
         [JsonPropertyName("air_quality")]
         public AirQuality? air_quality { get; set; }
         [JsonPropertyName("hour")]
-        public Hour[] hour { get; set; }
+        public Hour[]? hour { get; set; }
     }
+
+
+
 }

@@ -67,7 +67,7 @@ class WeatherAppMain
     {
         string responseBody = "";
         HttpResponseMessage response;
-        url = $"http://api.weatherapi.com/v1/{info}?key={Environment.GetEnvironmentVariable("apiKey")}&q={city}&country=UnitedStatesOfAmerica&aqi=no";
+        url = $"http://api.weatherapi.com/v1/{info}?key={Environment.GetEnvironmentVariable("apiKey")}&q={city}&country=UnitedStatesOfAmerica&aqi=no&days=3";
 
         response = await client.GetAsync(url);
         response.EnsureSuccessStatusCode();
@@ -82,6 +82,7 @@ class WeatherAppMain
         Console.WriteLine("{0, 53}", "Current Conditions");
         Console.WriteLine(new string('-', 105));
         Console.WriteLine(" {0, -15} | {1, -10} | {2, 5} | {3, 10}", "City", "Temp", "Precip", "Feels Like");
+        Console.WriteLine(new string('-', 105));
         Console.WriteLine(" {0, -15} | {1, -10} | {2, 5} | {3, 10}", data.location.name, 
             data.current.temp_f, data.current.precip_in, data.current.feelslike_f);
         Console.WriteLine(new string('-', 105));
@@ -91,12 +92,18 @@ class WeatherAppMain
     {
         //for each hour, output a line 
 
+        
+        
         Console.WriteLine(new string('=', 105));
         Console.WriteLine("{0, 53}", "Daily Forecast");
         Console.WriteLine(new string('-', 105));
-        Console.WriteLine(" {0, -15} | {1, -10} | {2, 5} | {3, 10} | {4, 15}", "City", "Time", "Temp", "Precip", "Feels Like");
-        Console.WriteLine(" {0, -15} | {1, -10} | {2, 5} | {3, 10}", data.location.name,
-            data.current.temp_f, data.current.precip_in, data.current.feelslike_f);
+        Console.WriteLine(" {0, -15} | {1, -10} | {2, 5} | {3, 10} | {4, 15}", "City", "Date", " AvgTemp", "Chance of Rain", "Conditions");
+        Console.WriteLine(new string('-', 105));
+        foreach (ForecastDay day in data.forecast.forecastDay)
+        {
+            Console.WriteLine(" {0, -15} | {1, -10} | {2, 5} | {3, 10} | {4, 15}", data.location.name,
+            day.date, day.day.avgtemp_f, day.day.daily_will_it_rain + "%", day.day.condition.text);
+        }
 
        
 

@@ -1,4 +1,6 @@
-﻿namespace WeatherApp_Console.Models
+﻿using Newtonsoft.Json;
+
+namespace WeatherApp_Console.Models
 {
     public class Day
     {
@@ -16,9 +18,8 @@
         public decimal avgvis_km { get; set; }
         public decimal avgvis_miles { get; set; }
         public int avghumidity { get; set; }
-        public string? conditionText { get; set; }
-        public string? conditionIcon { get; set; }
-        public int conditionCode { get; set; }
+        [JsonProperty("condition")]
+        public Condition condition { get; set; }
         public decimal uv {  get; set; }
         public int daily_will_it_rain { get; set; } // 1 = yes, 2 = no --> will it rain or not
         public int daily_will_it_snow { get; set; } // 1 = yes, 2 = no --> will it rain or not
